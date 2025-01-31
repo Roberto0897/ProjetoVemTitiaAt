@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-inner img {
+    height: 300px; /* ajustar para o valor desejado */
+    /* Mantém a proporção da imagem e preenche o container */
+}
+
+.content {
+    flex: 1; /* Faz o conteúdo principal crescer e empurrar o footer para baixo */
+}
+
+footer {
+    background-color: #990CA6;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+}

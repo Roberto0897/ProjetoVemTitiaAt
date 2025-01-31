@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Ola</h1>
+
+<div class="row">
+    {% for produto in produtos %}
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="card h-100 shadow">
+                <!-- Imagem do produto -->
+                {% if produto.image %}
+                    <img src="{{ produto.image.url }}" class="card-img-top" alt="Imagem de {{ produto.name }}">
+                {% else %}
+                    <img src="/static/images/produto 1.png" class="card-img-top" alt="Imagem padrão do produto">
+                {% endif %}
+
+                <!-- Detalhes do produto -->
+                <div class="card-body">
+                    <h5 class="card-title">{{ produto.name }}</h5>
+                    <p class="card-text">
+                        <strong>Marca:</strong> {{ produto.brand.name }}<br>
+                        <strong>Categoria:</strong> {{ produto.category.name }}<br>
+                        <strong>Preço:</strong> R$ {{ produto.selling_price|floatformat:2 }}<br>
+                        <strong>Quantidade:</strong> {{ produto.quantity }}
+                    </p>
+                    <p class="card-text">
+                        {{ produto.description|truncatewords:15 }}
+                    </p>
+                </div>
+
+                <!-- Ações -->
+                <div class="card-footer text-center bg-transparent border-top-0">
+                    <a href="{% url 'sale_produto' produto.id %}" class="btn btn-success btn-sm">Comprar</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <!-- Mensagem caso não haja produtos -->
+        <div class="col-12">
+            <p class="text-center text-muted">Nenhum produto disponível no momento.</p>
+        </div>
+    {% endfor %}
+</div>
+
+
+<div class="container mt-4">
+    <div class="row">
+      {% for produto in produtos %}
+        <div class="col-md-2">
+          <div class="card" style="width: 100%;">
+            <img src="{{ produto.image.url }}" class="card-img-top" alt="{{ produto.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ produto.name }}</h5>
+              <p class="card-text">R$ {{ produto.selling_price }}</p>
+              <a href="#" class="btn btn-primary">COMPRAR</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
