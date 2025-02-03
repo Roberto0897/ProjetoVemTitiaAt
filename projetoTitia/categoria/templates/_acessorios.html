@@ -1,17 +1,23 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'categoria_list.html' %}
 {% block content %}
+{% load static %}
+
+<h1>Acessorios</h1>
+
+<p>Explore nossa seleção de acessórios íntimos pensados para intensificar o prazer e proporcionar experiências únicas. 
+  Desde itens que adicionam sensualidade ao dia a dia até brinquedos que estimulam novos sentidos, 
+  nossa linha de acessórios é ideal para quem busca se aventurar no mundo do prazer com confiança. </p>
 
 
-<h1>teste</h1>
+
 <div class="container-fluid mt-4 px-5">
     <div class="row justify-content-center" >
-      {% for produto in acessorios|slice:":10" %}
+      {% for produto in acessorios %}
         <div class="col-md-5th p-2"> 
           <div class="card"  style="width: 90%; margin: 0 auto; display: flex; flex-wrap: wrap; margin-bottom: 1rem;">
             <img src="{{ produto.image.url }}" class="card-img-top" style="width: 100%;" alt="{{ produto.name }}">
             <div class="card-body">
-              <h5 class="card-title playfair-display">{{ produto.name }}</h5>
+              <h5 class="card-title ">{{ produto.name }}</h5>
               <p class="card-text" ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
               <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
             </div>
@@ -21,4 +27,61 @@
     </div>
   </div>  
 
+
+  <style>
+
+  .card-img-top {
+    width: 300px; /* Largura fixa */
+    height: 250px; /* Altura fixa */
+    /* Garante que a imagem mantenha proporção sem deformar  object-fit: cover; */
+  }
+
+    @media (min-width: 992px) { /* Para telas grandes (PC e notebooks) */
+        .col-md-5th {
+            width: 18%; /* Divide a linha em 5 colunas */
+
+        }
+    }
+
+    @media (max-width: 991px) { /* Para tablets */
+        .col-md-5th {
+            width: 50%; /* Mostra 2 cards por linha */
+        }
+    }
+
+    @media (max-width: 576px) { /* Para celulares */
+        .col-md-5th {
+            width: 100%; /* Mostra 1 card por linha */
+        }
+    }
+
+    .playfair-display ,h1{
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: bold;
+    font-size: 2.7rem;
+    color: #fff;
+   
+  }
+
+  .roboto, p {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  font-size: 1.2rem;
+  color: #fff;
+  }
+
+  h1, p{
+    padding: 2rem;
+  }
+
+  p{
+    width: 50%;
+  }
+</style>
 {% endblock %}

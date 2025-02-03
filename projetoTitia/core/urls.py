@@ -17,8 +17,8 @@ urlpatterns = [
 
     path('marca/list/', marca_views.BrandListView.as_view(), name='brand_list'),
     path('produto/list/', produto_views.ProdutoListView.as_view(), name='produto_list'),
-   # path('acessorios/', categoria_views.CategoryListView.as_view(), name='category_list'),
-    path('categoria/<slug:slug>/', categoria_views.CategoryListView.as_view(), name='category_list'),
+    path('categoria/acessorios/', categoria_views.AcessoriosListView.as_view(), name='acessorios_list'),
+   # path('categoria/<slug:slug>/', categoria_views.CategoryListView.as_view(), name='category_list'),
     path('produto/', include('produto.urls')),
     
    # path('produtos/', include('produto.urls')), 
