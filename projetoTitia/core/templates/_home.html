@@ -10,14 +10,14 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{%static 'images/slide1.png'%}" class="d-block w-100" alt="...">
+      <img src="{%static 'images/slide1at.png'%}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{%static 'images/slide3.png'%}" class="d-block w-100" alt="...">
+      <img src="{%static 'images/slide2at.png'%}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
@@ -42,16 +42,16 @@
 
 <style>   
   .carousel-inner img {
-    height: 350px; /* ajustar para o valor desejado */
+    height: 400px; /* ajustar para o valor desejado */
    /*object-fit: cover; Mantém a proporção da imagem e preenche o container */
   }
 </style>
 </div>
 
 <div  class="barraCarrossel d-flex align-items-center text-white  d-block w-100">
-  <h3>Entrega rapida e discreta</h3> <i class="bi bi-box2-heart-fill" style="font-size: 4rem; padding-left: 3rem; padding-right: 3rem;"></i>
-  <h3>Compra 100% segura</h3> <i class="bi bi-file-earmark-lock" style="font-size: 4rem; padding-left: 3rem;  padding-right: 3rem;"></i> 
-  <h3>Parcele em ate 12 X</h3> <i class="bi bi-credit-card" style="font-size: 4rem; padding-left: 3rem;"></i>
+  <h3 >Entrega rapida e discreta</h3> <i class="bi bi-box2-heart-fill" style="font-size: 4.3rem; padding-left:3rem; padding-right: 10rem;"></i>
+  <h3>Compra 100% segura</h3> <i class="bi bi-file-earmark-lock" style="font-size: 4.3rem; padding-left: 3rem;  padding-right: 10rem;"></i> 
+  <h3>Parcele em ate 12 X</h3> <i class="bi bi-credit-card" style="font-size: 4.3rem; padding-left: 3rem;"></i>
 </div>
 
 <style>   
@@ -69,111 +69,25 @@
 </style>
 
 <div class="d-flex align-items-center ">
-  <i class="bi bi-balloon-heart" style="font-size: 3rem; color: #fff; padding-left: 1rem;"></i> <h2 style="color: #fff; padding-left: 1rem;"> Seleção mais vendidos</h2>
+  <i class="bi bi-balloon-heart" style="font-size: 3rem; color: #fff; padding-left: 1rem; "></i> <h2 style="color: #fff; padding-left: 1rem; padding-top: 1rem;"> Seleção mais vendidos</h2>
 </div>
 
-<div class="d-flex align-items-center " style="padding: 1rem; padding-left: 5rem;">
-  <div class="card" style="width: 20rem;">
-    <img src="{%static 'images/produto 3.png'%}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Vibrador Estimulador</h5>
-      <p class="card-text">R$ 31,41 no Pix
-        ou 
-        R$ 34,90 no cartão de crédito</p>
-      <a href="#" class="btn btn-primary">COMPRAR</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
+<div class="container-fluid mt-4 px-5">
+  <div class="row justify-content-center" >
+    {% for produto in produto|slice:":10" %}
+      <div class="col-md-5th p-2"> 
+        <div class="card"  style="width: 90%; margin: 0 auto; display: flex; flex-wrap: wrap; margin-bottom: 1rem;">
+          <img src="{{ produto.image.url }}" class="card-img-top" style="width: 100%;" alt="{{ produto.name }}">
+          <div class="card-body">
+            <h5 class="card-title playfair-display">{{ produto.name }}</h5>
+            <p class="card-text" ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
+            <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
   </div>
 </div>
-
-
-
-
-
-<div class="d-flex align-items-center " style="padding: 1rem; padding-left: 5rem;">
-  <div class="card" style="width: 20rem;">
-    <img src="{%static 'images/produto 3.png'%}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Vibrador Estimulador</h5>
-      <p class="card-text">R$ 31,41 no Pix
-        ou 
-        R$ 34,90 no cartão de crédito</p>
-      <a href="#" class="btn btn-primary">COMPRAR</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
-
 
 
 
@@ -188,103 +102,53 @@
       </p>
 
       <div class="d-grid gap-2 col-6 mx-auto" style="padding-top: 2rem;">
-        <button class="btn btn-primary" type="button">Conhecer produtos</button>
+        <button class="btn text-white" style="border-color: #fff; border-radius: 1rem; font-weight: bold;" type="button">CONHECER PRODUTOS</button>
       </div>
     </div>
     
-    <div class="col-md-8">
+    <div class="col-md-6">
       <div class="row">
-        <div class="col-md-4">
-          <div class="card" style="width: 20rem; margin-top: 3rem; margin-left: 3rem ;">
-            <img src="{%static 'images/produto 3.png'%}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-md-4">
-          <div class="col-md-4">
-            <div class="card" style="width: 20rem; margin-top: 3rem; margin-left: 1.5rem ;">
-              <img src="..." class="card-img-top" alt="...">
+        {% for produto in ofertasdasemana|slice:":3" %}  <!-- Apenas 3 produtos -->
+          <div class="col-md-4 p-4"> <!-- p-4 espaco entre cards -->
+            <div class="card" style="width: 100%; display: flex; flex-wrap: wrap; margin-bottom: 1rem; margin-left: 8rem; margin-top: 1rem;">
+              <img src="{{ produto.image.url }}" class="card-img-top" style="width: 100%;" alt="{{ produto.name }}">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title playfair-display">{{ produto.name }}</h5>
+                <p class="card-text">
+                  <span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228);">
+                    R$ {{ produto.selling_price }}
+                  </span> 
+                  no PIX ou Cartão em até 12x sem juros
+                </p>
+                <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+              </div>
             </div>
           </div>
-        </div>
+        {% endfor %}
       </div>
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
 
-      <div class="col-md-4">
-        <div class="col-md-4">
-          <div class="card" style="width: 20rem; margin-top: 3rem; ">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="container-fluid mt-4 px-5">
+  <div class="row justify-content-center" >
+    {% for produto in vibradores|slice:":5" %}
+      <div class="col-md-5th p-2"> 
+        <div class="card"  style="width: 90%; margin: 0 auto; display: flex; flex-wrap: wrap; margin-bottom: 1rem;">
+          <img src="{{ produto.image.url }}" class="card-img-top" style="width: 100%;" alt="{{ produto.name }}">
+          <div class="card-body">
+            <h5 class="card-title playfair-display">{{ produto.name }}</h5>
+            <p class="card-text" ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
+            <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-      </div>
-    </div>
-  </div>
+    {% endfor %}
   </div>
 </div>
 
-<div class="d-flex align-items-center " style="padding: 1rem; padding-left: 5rem; margin-top: 2rem; margin-bottom: 1rem;">
-  <div class="card" style="width: 20rem;">
-    <img src="{%static 'images/produto 3.png'%}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Vibrador Estimulador</h5>
-      <p class="card-text">R$ 31,41 no Pix
-        ou 
-        R$ 34,90 no cartão de crédito</p>
-      <a href="#" class="btn btn-primary">COMPRAR</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
 
 <div class="novidadesLacamentos text-white  d-block w-100">
   <div class="row">
@@ -294,252 +158,120 @@
         Estamos empolgados em anunciar que a nossa loja está repleta de novidades e lançamentos incríveis que acabaram de chegar! 
         A nossa equipe trabalhou arduamente para selecionar uma variedade de produtos que certamente irão encantar você. </p>
         <div class="d-grid gap-2 col-6 mx-auto" style="padding-top: 2rem;">
-          <button class="btn btn-primary" type="button">Conhecer produtos</button>
+          <button class="btn text-white" style="border-color: #fff; border-radius: 1rem; font-weight: bold;" type="button">Conhecer produtos</button>
         </div>
     </div>
-
-
-<div class="col-md-8">
+    <div class="col-md-6">
       <div class="row">
-        <div class="col-md-4">
-          <div class="card" style="width: 20rem; margin-top: 3rem; margin-left: 3rem ; margin-bottom: 3rem;">
-            <img src="{%static 'images/produto 3.png'%}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-md-4">
-          <div class="col-md-4">
-            <div class="card" style="width: 20rem; margin-top: 3rem; margin-left: 1.5rem ;">
-              <img src="..." class="card-img-top" alt="...">
+        {% for produto in novidadeslacamentos|slice:":3" %}  <!-- Apenas 3 produtos -->
+          <div class="col-md-4 p-4"> <!-- p-4 espaco entre cards -->
+            <div class="card" style="width: 100%; display: flex; flex-wrap: wrap; margin-bottom: 1rem; margin-left: 8rem; margin-top: 1rem;">
+              <img src="{{ produto.image.url }}" class="card-img-top" style="width: 100%;" alt="{{ produto.name }}">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title playfair-display">{{ produto.name }}</h5>
+                <p class="card-text">
+                  <span style="font-weight: bold; font-size: 1.3rem;  color:rgb(192, 13, 228);">
+                    R$ {{ produto.selling_price }}
+                  </span> 
+                  no PIX ou Cartão em até 12x sem juros
+                </p>
+                <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+              </div>
             </div>
           </div>
-        </div>
+        {% endfor %}
       </div>
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
 
-      <div class="col-md-4">
-        <div class="col-md-4">
-          <div class="card" style="width: 20rem; margin-top: 3rem; ">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="container-fluid mt-4 px-5">
+  <div class="row justify-content-center" >
+    {% for produto in acessorios|slice:":5" %}
+      <div class="col-md-5th p-2"> 
+        <div class="card"  style="width: 90%; margin: 0 auto; display: flex; flex-wrap: wrap; margin-bottom: 1rem;">
+          <img src="{{ produto.image.url }}" class="card-img-top" style="width: 100%;" alt="{{ produto.name }}">
+          <div class="card-body">
+            <h5 class="card-title playfair-display">{{ produto.name }}</h5>
+            <p class="card-text" ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
+            <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
           </div>
         </div>
       </div>
-    </div>
+    {% endfor %}
   </div>
+</div>
+
+<div class="container-fluid mt-4 px-5">
+  <div class="row justify-content-center" >
+    {% for produto in Lubrificantes|slice:":5" %}
+      <div class="col-md-5th p-2"> 
+        <div class="card"  style="width: 90%; margin: 0 auto; display: flex; flex-wrap: wrap; margin-bottom: 1rem;">
+          <img src="{{ produto.image.url }}" class="card-img-top" style="width: 100%;" alt="{{ produto.name }}">
+          <div class="card-body">
+            <h5 class="card-title playfair-display">{{ produto.name }}</h5>
+            <p class="card-text " ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
+            <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<div class="container-fluid mt-4 px-5" style="margin-left: 2rem;">
+  <div class="row justify-content-center">
+    <!-- Card 1 -->
+    <div class="col-md-3th col-sm-12 p-2">
+      <div class="card" style="background-color: #990CA6;">
+        <h1 class="card-title text-white text-center py-4" style=" height: 8rem; display: flex; flex-direction: column; justify-content: space-between;">Linha Vibrador</h1>
+        <img src="{% static 'images/vibradoresLinhas.png' %}" class="card-img-top" style="width: 90%; padding-left: 3rem; " alt="...">
+        <div class="card-body">
+          <p class="card-text  text-white">Explore nossa seleção de vibradores projetados para proporcionar prazer e confortos</p>
+          <a href="#" class="btn text-white d-flex justify-content-center" style="border-color: #fff; border-radius: 1rem; font-weight: bold;  margin-bottom: 1rem;">Conhecer Produtos</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-3th col-sm-12 p-2">
+      <div class="card" style="background-color: #990CA6;">
+        <h1 class="card-title text-white text-center py-4" style=" height: 8rem; display: flex; flex-direction: column; justify-content: space-between;">Linha Lingeries</h1>
+        <img src="{% static 'images/produto 10.png' %}"  class="card-img-top "  style="width: 90%; padding-left: 3rem;" alt="...">
+        <div class="card-body " >
+          <p class="card-text text-white">Descubra nossa coleção de lingeries sensuais e elegantes</p>
+          <a href="#" class="btn text-white d-flex justify-content-center" style="border-color: #fff; border-radius: 1rem; font-weight: bold;  margin-bottom: 1rem;">Conhecer Produtos</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-3th col-sm-12 p-2">
+      <div class="card" style="background-color: #990CA6;">
+        <h1 class="card-title text-white text-center py-4" style=" height: 8rem; display: flex; flex-direction: column; justify-content: space-between;">Acessórios</h1>
+        <img src="{%static 'images/acessoriosLinhas.png' %}" class="card-img-top" style="width: 90%; padding-left: 3rem;" alt="...">
+        <div class="card-body">
+          <p class="card-text  text-white">Encontre os acessórios perfeitos para complementar sua experiência.</p>
+          <a href="#" class="btn text-white d-flex justify-content-center" style="border-color: #fff; border-radius: 1rem; font-weight: bold; margin-bottom: 1rem;">Conhecer Produtos</a>
+        </div>
       </div>
     </div>
   </div>
-  </div>
 </div>
 
-<div class="d-flex align-items-center " style="padding: 1rem; padding-left: 5rem;">
-  <div class="card" style="width: 20rem;">
-    <img src="{%static 'images/produto 3.png'%}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Vibrador Estimulador</h5>
-      <p class="card-text">R$ 31,41 no Pix
-        ou 
-        R$ 34,90 no cartão de crédito</p>
-      <a href="#" class="btn btn-primary">COMPRAR</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
-
-
-
-
-<div class="d-flex align-items-center " style="padding: 1rem; padding-left: 5rem;">
-  <div class="card" style="width: 20rem; ">
-    <img src="{%static 'images/produto 3.png'%}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Vibrador Estimulador</h5>
-      <p class="card-text">R$ 31,41 no Pix
-        ou 
-        R$ 34,90 no cartão de crédito</p>
-      <a href="#" class="btn btn-primary">COMPRAR</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="secaoCategoria d-flex block " style="padding-left: 4.5rem;">
-<div class="card" style="width: 33rem; background-color: #990CA6; ">
-  <h1 class="card-title text-white" style="text-align: center; padding-top: 2rem;">Linha vibradores</h1>
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary d-flex justify-content-center">Conhecer Produtos</a>
-  </div>
-</div>
-
-<div class="card" style="width: 33rem; background-color: #990CA6;">
-  <h1 class="card-title text-white" style="text-align: center; padding-top: 2rem;" >Linha lingeries</h1>
-  <img src="{%static 'images/produto 1.png'%}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary d-flex justify-content-center"  >Conhecer Produtos</a>
-  </div>
-</div>
-
-<div class="card" style="width: 33rem; background-color: #990CA6;">
-  <h1 class="card-title text-white" style="text-align: center; padding-top: 2rem;">Acessorios</h1>
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary d-flex justify-content-center">Conhecer Produtos</a>
-  </div>
-</div>
-</div>
-</div>
-
-
-
-
-<div class="d-flex align-items-center " style="padding: 1rem; padding-left: 5rem;">
-  <div class="card" style="width: 20rem; ">
-    <img src="{%static 'images/produto 3.png'%}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Vibrador Estimulador</h5>
-      <p class="card-text">R$ 31,41 no Pix
-        ou 
-        R$ 34,90 no cartão de crédito</p>
-      <a href="#" class="btn btn-primary">COMPRAR</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
-
-
-<div class="container mt-4">
-  <div class="row">
-    {% for produto in produtos %}
-      <div class="col-md-2">
-        <div class="card" style="width: 100%;">
-          <img src="{{ produto.image.url }}" class="card-img-top" alt="{{ produto.name }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ produto.name }}</h5>
-            <p class="card-text">R$ {{ produto.selling_price }}</p>
-            <a href="#" class="btn btn-primary">COMPRAR</a>
+<div class="container-fluid mt-4 px-5">
+  <div class="row justify-content-center" >
+    {% for produto in produto|slice:":5" %}
+      <div class="col-md-5th p-2"> 
+        <div class="card"  style="width: 90%; margin: 0 auto; display: flex; flex-wrap: wrap; margin-bottom: 1rem;">
+          <img src="{{ produto.image.url }}" class="card-img-top" style="width: 100%;" alt="{{ produto.name }}">
+          <div class="card-body " >
+            <h5 class="card-title playfair-display">{{ produto.name }}</h5>
+            <p class="card-text" ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
+            <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
           </div>
         </div>
       </div>
@@ -548,24 +280,101 @@
 </div>
 
 <style>
+    .card-img-top {
+    width: 300px; /* Largura fixa */
+    height: 250px; /* Altura fixa */
+    /* Garante que a imagem mantenha proporção sem deformar  object-fit: cover; */
+  }
+
+    @media (min-width: 992px) { /* Para telas grandes (PC e notebooks) */
+        .col-md-5th {
+            width: 18%; /* Divide a linha em 5 colunas */
+
+        }
+    }
+
+    @media (max-width: 991px) { /* Para tablets */
+        .col-md-5th {
+            width: 50%; /* Mostra 2 cards por linha */
+        }
+    }
+
+    @media (max-width: 576px) { /* Para celulares */
+        .col-md-5th {
+            width: 100%; /* Mostra 1 card por linha */
+        }
+    }
+
+
+    @media (min-width: 992px) { /* Para telas grandes (PC e notebooks) */
+        .col-md-3th {
+            width: 28%; /* Divide a linha em 5 colunas */
+
+        }
+    }
+
+    @media (max-width: 576px) { /* Para celulares */
+        .col-md-3th {
+            width: 100%; /* Mostra 1 card por linha */
+        }
+    }
+  .playfair-display .ofertasSemana .novidadesLacamentos, h1 {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: bold;
+    font-size: 3.5rem;
+    
+  }
+
+  .playfair-display ,h3 {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: bold;
+    font-size: 2.5rem;
+   
+    
+  }
+
+
+  .playfair-display {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: bold;
+    font-size: 1.5rem;
+   
+    
+  }
+  .roboto, p {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  font-size: 1.2rem;
+  }
+
   .card {
    margin-right: 5rem;
    margin-top: 1rem;
 
- }
+   }
+   
    .ofertasSemana{
     background-color: #990CA6;
     h1 {
       padding: 3rem;
     }
-    .card{
-      margin-bottom: 3rem;
-    }
+ 
   }
 
    .novidadesLacamentos{
     h1{
       padding: 2rem;
+      padding-bottom: 3rem;
     }
 
     .linha-estilistica {

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<h1>teste</h1>
+<div class="container-fluid mt-4 px-5">
+    <div class="row justify-content-center" >
+      {% for produto in acessorios|slice:":10" %}
+        <div class="col-md-5th p-2"> 
+          <div class="card"  style="width: 90%; margin: 0 auto; display: flex; flex-wrap: wrap; margin-bottom: 1rem;">
+            <img src="{{ produto.image.url }}" class="card-img-top" style="width: 100%;" alt="{{ produto.name }}">
+            <div class="card-body">
+              <h5 class="card-title playfair-display">{{ produto.name }}</h5>
+              <p class="card-text" ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
+              <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>  
+
+{% endblock %}

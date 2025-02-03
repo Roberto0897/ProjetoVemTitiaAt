@@ -1,43 +1,63 @@
 {% load static %}
 <footer class="footer mt-auto py-3 text-center">
-
-  <div class="d-block d-flex">
-    <div class="container">
-      <h4>Contatos</h4>
-      <hr class="linha-estilistica">
-      <div class="text-white">
-        <a href="#" ><i class="bi bi-telephone-fill d-flex align-items-center d-block"></i><span>61 99999-0000</span></a>
-        <a href="#" ><i class="bi bi-whatsapp"></i><span>61 99999-0000</span></a>
-        <a href="#" ><i class="bi bi-envelope"></i><span>tita@gmail.com</span></a>
+  <div class="container-fluid">
+    <div class="row"> <!-- Mantém tudo alinhado horizontalmente -->
+      
+      <!-- Coluna Contatos -->
+      <div class="col-md-4 ">
+        <h4>Contatos</h4>
+        <hr class="linha-estilistica">
+        <div class="text-white d-flex flex-column gap-2 align-items-center">
+          <a href="#" class="d-flex align-items-center gap-2"  >
+            <i class="bi bi-telephone-fill"></i>
+            <span>99999-0000</span>
+          </a>
+          <a href="#" class="d-flex align-items-center gap-2">
+            <i class="bi bi-whatsapp"></i>
+            <span>61 99999-0000</span>
+          </a>
+          <a href="#" class="d-flex align-items-center gap-2">
+            <i class="bi bi-envelope"></i>
+            <span>tita@gmail.com</span>
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="container">
-      <h4>Informacoes</h4>
-      <hr class="linha-estilistica">
+      <!-- Coluna Informações -->
+      <div class="col-md-4">
+        <h4>Informações</h4>
+        <hr class="linha-estilistica">
+        <div class="d-flex flex-column gap-1">
           <span>Quem Somos</span>
           <span>Prazos e Formas de Entrega</span>
           <span>Trocas e Devoluções</span>
           <span>Formas de Pagamento</span>
           <span>Política de Privacidade</span>
           <span>Termos e Condições</span>
-    </div>
-
-    <div class="container">
-      <h4>Redes socias</h4>
-      <hr class="linha-estilistica">
-      <p>Siga-nos em nossas redes socias:</p>
-      <div class="d-flex " style="padding-right: 0.5rem; margin-left: 13rem; margin-top: 3rem;">
-      <a href="#"><i class="bi bi-instagram" style="font-size: 3rem; padding-right: 2rem;"></i></a>
-      <a href="#"><i class="bi bi-whatsapp" style="font-size: 3rem; padding-right: 2rem;"></i></a>
-      <a href="#"><i class="bi bi-tiktok" style="font-size: 3rem;"></i></a>
+        </div>
       </div>
+
+      <!-- Coluna Redes Sociais -->
+      <div class="col-md-4">
+        <h4>Redes sociais</h4>
+        <hr class="linha-estilistica">
+        <p>Siga-nos em nossas redes sociais:</p>
+        <div class="d-flex justify-content-center gap-3 mt-3">
+          <a href="#"><i class="bi bi-instagram" style="font-size: 3rem;"></i></a>
+          <a href="#"><i class="bi bi-whatsapp" style="font-size: 3rem;"></i></a>
+          <a href="#"><i class="bi bi-tiktok" style="font-size: 3rem;"></i></a>
+        </div>
+      </div>
+
     </div>
   </div>
-
 </footer>
 
 <style>
+
+   .bi{
+    margin-top: 2rem;
+   }
    footer {
     background-color: #990CA6;
     color:#fff;
@@ -55,7 +75,6 @@
    a{
     text-decoration: none;
     color: #fff;
-    display: block;
     align-items: center;
    }
   .linha-estilistica {

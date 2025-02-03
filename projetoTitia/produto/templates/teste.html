@@ -1,17 +1,12 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-
-
 <div class="row">
     {% for produto in produto %}
         <div class="col-md-4 col-sm-6 mb-4">
             <div class="card h-100 shadow">
                 <!-- Imagem do produto -->
                 {% if produto.image %}
-                 <img src="{{ produto.image.url }}" class="card-img-top" alt="Imagem de {{ produto.name }}">
+                <!-- <img src="{{ produto.image.url }}" class="card-img-top" alt="Imagem de {{ produto.name }}"> --> 
                 {% else %}
-                 <img src="/static/images/produto 3.png" class="card-img-top" alt="Imagem padrão do produto">
+                   <!--<img src="/static/images/produto 3.png" class="card-img-top" alt="Imagem padrão do produto">--> 
                 {% endif %}
 
                 <!-- Detalhes do produto -->
@@ -35,7 +30,3 @@
     {% endfor %}
 </div>
 
-
-
-
-{% endblock %}
