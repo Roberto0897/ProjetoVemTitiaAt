@@ -2,17 +2,16 @@
 {% block content %}
 {% load static %}
 
-<h1>Acessorios</h1>
+<h1>Bem-Estar Masculino</h1>
 
-<p style="text-align: justify;">Explore nossa seleção de acessórios íntimos pensados para intensificar o prazer e proporcionar experiências únicas. 
-  Desde itens que adicionam sensualidade ao dia a dia até brinquedos que estimulam novos sentidos, 
-  nossa linha de acessórios é ideal para quem busca se aventurar no mundo do prazer com confiança. </p>
+<p style="text-align: justify;"> Voltado para o prazer, conforto e bem-estar do homem moderno. Aqui, você encontra uma gama de produtos pensados para intensificar a 
+  experiência íntima, incluindo vibradores, acessórios eróticos, lubrificantes e cosméticos específicos para a pele masculina. </p>
 
 
 
 <div class="container-fluid mt-4 px-5">
     <div class="row justify-content-center" >
-      {% for produto in acessorios %}
+      {% for produto in masculino %}
         <div class="col-md-5th p-2"> 
           <div class="card"  style="width: 90%; margin: 0 auto; display: flex; flex-wrap: wrap; margin-bottom: 1rem;">
             <img src="{{ produto.image.url }}" class="card-img-top" style="width: 100%;" alt="{{ produto.name }}">

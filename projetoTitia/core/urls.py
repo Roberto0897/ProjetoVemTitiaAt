@@ -18,6 +18,11 @@ urlpatterns = [
     path('marca/list/', marca_views.BrandListView.as_view(), name='brand_list'),
     path('produto/list/', produto_views.ProdutoListView.as_view(), name='produto_list'),
     path('categoria/acessorios/', categoria_views.AcessoriosListView.as_view(), name='acessorios_list'),
+    path('categoria/cosmeticosintimos/', categoria_views.CosmeticosListView.as_view(), name='cosmeticos_list'),
+    path('categoria/estiloeconforto/', categoria_views.EstiloListView.as_view(), name='estilo_list'),
+    path('categoria/cuidadospessoais/', categoria_views.CuidadosListView.as_view(), name='cuidados_list'),
+    path('categoria/bemestarfeminino/', categoria_views.FemininaListView.as_view(), name='feminina_list'),
+    path('categoria/bemestarmasculino/', categoria_views.MasculinoListView.as_view(), name='masculino_list'),
    # path('categoria/<slug:slug>/', categoria_views.CategoryListView.as_view(), name='category_list'),
     path('produto/', include('produto.urls')),
     

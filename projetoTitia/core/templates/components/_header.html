@@ -39,11 +39,11 @@
 <nav class="navbar navbar-expand-lg "style="background-color: #fff;  padding: 10px;">
     <div class="container-fluid">
       <a class="navbar-brand " href="/">Inicio</a>
-      <a class="navbar-brand " href="/categoria/mulher/">Bem-estar Feminino</a>
-      <a class="navbar-brand " href="/categoria/homem/">Bem-estar Maculino</a>
-      <a class="navbar-brand " href="/categoria/acessorios/">Acessorios</a>
-      <a class="navbar-brand " href="/categoria/cosmeticosintimos/">Comesticos Intimos</a>
-      <a class="navbar-brand " href="/categoria/estiloeconforto/">Estilo & Conforto</a>
-      <a class="navbar-brand " href="/categoria/cuidadospesssoais/">Cuidados Pessoais</a>
+      <a class="navbar-brand " href="{% url 'feminina_list' %}">Bem-estar Feminino</a>
+      <a class="navbar-brand " href="{% url 'masculino_list' %}">Bem-estar Maculino</a>
+      <a class="navbar-brand " href="{% url 'acessorios_list' %}">Acessorios</a>
+      <a class="navbar-brand " href="{% url 'cosmeticos_list' %}">Comesticos Intimos</a>
+      <a class="navbar-brand " href="{% url 'estilo_list' %}">Estilo & Conforto</a>
+      <a class="navbar-brand " href="{% url 'cuidados_list' %}">Cuidados Pessoais</a>
     </div>
 </nav>
