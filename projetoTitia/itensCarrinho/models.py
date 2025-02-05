@@ -10,4 +10,4 @@ class itensCarrinho(models.Model):
     subtotal = models.PositiveIntegerField()
 
     def __str__(self):
-        return "Carro:" + str(self.carro.id) + "itensCarrinho:" + str(self.id)
+        return "Carro:" + str(self.carrinho.id) + "itensCarrinho:" + str(self.id)

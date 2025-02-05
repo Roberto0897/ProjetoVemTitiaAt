@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Meu Carrinho</h2>
+
+    {% if produtos_carrinho %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço Unitário</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in produtos_carrinho %}
+                    <tr>
+                        <td>{{ item.produto.name }}</td>
+                        <td>{{ item.quantidade }}</td>
+                        <td>R$ {{ item.produto.selling_price }}</td>
+                        <td>R$ {{ item.produto.selling_price|floatformat:2|add:item.quantidade }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'checkout' %}" class="btn btn-success">Finalizar Compra</a>
+    {% else %}
+        <p>Seu carrinho está vazio.</p>
+        <a href="{% url 'produto_list' %}" class="btn btn-primary">Continuar Comprando</a>
+    {% endif %}
+</div>
+{% endblock %}

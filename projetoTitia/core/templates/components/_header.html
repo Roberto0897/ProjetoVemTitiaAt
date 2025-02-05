@@ -1,26 +1,27 @@
 {% load static %}
-<nav class="navbar" style="background-color: #27033D; padding: 15px 20px;">
-  <div class="container-fluid d-flex align-items-center justify-content-between">
+<nav class="navbar w-100" style="background-color: #27033D;  position: sticky;   top: 0;  z-index: 1000; padding: 15px 20px;">
+  <div class="container-fluid d-flex align-items-center justify-content-between ">
       
       <!-- Logo -->
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand " href="/">
           <img src="{% static 'images/logo2.png' %}" alt="Logo" width="60">
       </a>
 
       <!-- Barra de Pesquisa -->
-      <form class="d-flex flex-grow-1 mx-3" role="search" >
-          <input class="form-control  me-2 w-50 w-md-25"  style="border-radius: 25px;"   sytype="search" placeholder="Pesquise o Produto" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">
+      <form class="d-flex flex-grow-1 mx-3" role="search" method="GET" action="{% url 'produto_list' %}">
+        <input class="form-control me-2 w-50 w-md-25" style="border-radius: 25px;" type="search" name="q" placeholder="Pesquise o Produto" aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">
             <i class="bi bi-search"></i> <!-- Ícone de pesquisa -->
-          </button>
+        </button>
       </form>
+    
 
       <!-- Ícones de Login e Carrinho -->
       <div class="d-flex align-items-center">
           <a href="/login" class="text-white text-decoration-none me-4">
             <i class="bi bi-person-circle "style="font-size: 2rem;"></i> Faça seu Login
           </a>
-          <a href="/carrinho" class="text-white text-decoration-none">
+          <a href="{% url 'visualizar_carrinho' %}" class="text-white text-decoration-none"> 
             <i class="bi bi-cart2 " style="font-size: 2rem;"></i> Carrinho
           </a>
       </div>
@@ -33,10 +34,11 @@
       color:#5D5D5D;
       font-weight: bold;
   }
+ 
 </style>
 
 
-<nav class="navbar navbar-expand-lg "style="background-color: #fff;  padding: 10px;">
+<nav class="navbar navbar-expand-lg w-100" style="background-color: #fff;  position: sticky;   top: 6rem;  z-index: 1000; padding: 10px;">
     <div class="container-fluid">
       <a class="navbar-brand " href="/">Inicio</a>
       <a class="navbar-brand " href="{% url 'feminina_list' %}">Bem-estar Feminino</a>

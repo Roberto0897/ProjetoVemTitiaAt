@@ -70,6 +70,27 @@ class MasculinoListView(ListView):
    def get_queryset(self):
      categorias = Category.objects.filter(name__in=["Masturbadores", "peniano"])  # Lista de categorias
      return Produto.objects.filter(category__in=categorias)
+   
+class OfertaListView(ListView):
+   model = Produto
+   template_name = '_ofertas.html'
+   context_object_name = 'oferta'
+
+   def get_queryset(self):
+     categorias = Category.objects.filter(name__in=["ofertasdasemana"])  # Lista de categorias
+     return Produto.objects.filter(category__in=categorias)
+   
+
+class NovidadesListView(ListView):
+   model = Produto
+   template_name = '_novidades.html'
+   context_object_name = 'novidade'
+
+   def get_queryset(self):
+     categorias = Category.objects.filter(name__in=["novidadeslacamentos"])  # Lista de categorias
+     return Produto.objects.filter(category__in=categorias)
+
+
 
 
 # funcao criar slug = mantem dinimicidade nas categorias

@@ -18,7 +18,7 @@
             <div class="card-body">
               <h5 class="card-title ">{{ produto.name }}</h5>
               <p class="card-text" style=" padding: 0rem; color: black; width: 100%;" ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
-              <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+              <a href="{% url 'produto_detalhe' produto.id %}" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
             </div>
           </div>
         </div>

@@ -81,7 +81,7 @@
           <div class="card-body">
             <h5 class="card-title playfair-display">{{ produto.name }}</h5>
             <p class="card-text" ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
-            <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+            <a href="{% url 'produto_detalhe' produto.id %}" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@
       </p>
 
       <div class="d-grid gap-2 col-6 mx-auto" style="padding-top: 2rem;">
-        <button class="btn text-white" style="border-color: #fff; border-radius: 1rem; font-weight: bold;" type="button">CONHECER PRODUTOS</button>
+        <a href="{% url 'oferta_list'%}" class="btn text-white" style="border-color: #fff; border-radius: 1rem; font-weight: bold;">CONHECER PRODUTOS</a>
       </div>
     </div>
     
@@ -120,7 +120,7 @@
                   </span> 
                   no PIX ou Cartão em até 12x sem juros
                 </p>
-                <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+                <a href="{% url 'produto_detalhe' produto.id %}" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
               </div>
             </div>
           </div>
@@ -141,7 +141,7 @@
           <div class="card-body">
             <h5 class="card-title playfair-display">{{ produto.name }}</h5>
             <p class="card-text" ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
-            <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+            <a href="{% url 'produto_detalhe' produto.id %}" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
           </div>
         </div>
       </div>
@@ -157,8 +157,8 @@
       <p>Descubra as últimas novidades e lançamentos que acabaram de chegar em nossa loja!
         Estamos empolgados em anunciar que a nossa loja está repleta de novidades e lançamentos incríveis que acabaram de chegar! 
         A nossa equipe trabalhou arduamente para selecionar uma variedade de produtos que certamente irão encantar você. </p>
-        <div class="d-grid gap-2 col-6 mx-auto" style="padding-top: 2rem;">
-          <button class="btn text-white" style="border-color: #fff; border-radius: 1rem; font-weight: bold;" type="button">Conhecer produtos</button>
+        <div class="d-grid gap-2 col-6 mx-auto" style="padding-top: 2rem;"> 
+          <a href="{% url 'novidade_list'%}" class="btn text-white" style="border-color: #fff; border-radius: 1rem; font-weight: bold;">CONHECER PRODUTOS</a>
         </div>
     </div>
     <div class="col-md-6">
@@ -175,7 +175,7 @@
                   </span> 
                   no PIX ou Cartão em até 12x sem juros
                 </p>
-                <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+                <a href="{% url 'produto_detalhe' produto.id %}" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
               </div>
             </div>
           </div>
@@ -196,7 +196,7 @@
           <div class="card-body">
             <h5 class="card-title playfair-display">{{ produto.name }}</h5>
             <p class="card-text" ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
-            <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+            <a href="{% url 'produto_detalhe' produto.id %}" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
           </div>
         </div>
       </div>
@@ -213,7 +213,7 @@
           <div class="card-body">
             <h5 class="card-title playfair-display">{{ produto.name }}</h5>
             <p class="card-text " ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
-            <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+            <a href="{% url 'produto_detalhe' produto.id %}" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
           </div>
         </div>
       </div>
@@ -227,11 +227,11 @@
     <!-- Card 1 -->
     <div class="col-md-3th col-sm-12 p-2">
       <div class="card" style="background-color: #990CA6;">
-        <h1 class="card-title text-white text-center py-4" style=" height: 8rem; display: flex; flex-direction: column; justify-content: space-between;">Linha Vibrador</h1>
+        <h1 class="card-title text-white text-center py-4" style=" height: 10rem; display: flex; flex-direction: column; justify-content: space-between;">Bem-estar Feminino</h1>
         <img src="{% static 'images/vibradoresLinhas.png' %}" class="card-img-top" style="width: 90%; padding-left: 3rem; " alt="...">
         <div class="card-body">
           <p class="card-text  text-white">Explore nossa seleção de vibradores projetados para proporcionar prazer e confortos</p>
-          <a href="#" class="btn text-white d-flex justify-content-center" style="border-color: #fff; border-radius: 1rem; font-weight: bold;  margin-bottom: 1rem;">Conhecer Produtos</a>
+          <a href="{% url 'feminina_list' %}" class="btn text-white d-flex justify-content-center" style="border-color: #fff; border-radius: 1rem; font-weight: bold;  margin-bottom: 1rem;">Conhecer Produtos</a>
         </div>
       </div>
     </div>
@@ -239,11 +239,11 @@
     <!-- Card 2 -->
     <div class="col-md-3th col-sm-12 p-2">
       <div class="card" style="background-color: #990CA6;">
-        <h1 class="card-title text-white text-center py-4" style=" height: 8rem; display: flex; flex-direction: column; justify-content: space-between;">Linha Lingeries</h1>
+        <h1 class="card-title text-white text-center py-4" style=" height: 10rem; display: flex; flex-direction: column; justify-content: space-between;">Estilo & Conforto</h1>
         <img src="{% static 'images/produto 10.png' %}"  class="card-img-top "  style="width: 90%; padding-left: 3rem;" alt="...">
         <div class="card-body " >
           <p class="card-text text-white">Descubra nossa coleção de lingeries sensuais e elegantes</p>
-          <a href="#" class="btn text-white d-flex justify-content-center" style="border-color: #fff; border-radius: 1rem; font-weight: bold;  margin-bottom: 1rem;">Conhecer Produtos</a>
+          <a href="{% url 'estilo_list' %}" class="btn text-white d-flex justify-content-center" style="border-color: #fff; border-radius: 1rem; font-weight: bold;  margin-bottom: 1rem;">Conhecer Produtos</a>
         </div>
       </div>
     </div>
@@ -251,11 +251,11 @@
     <!-- Card 3 -->
     <div class="col-md-3th col-sm-12 p-2">
       <div class="card" style="background-color: #990CA6;">
-        <h1 class="card-title text-white text-center py-4" style=" height: 8rem; display: flex; flex-direction: column; justify-content: space-between;">Acessórios</h1>
+        <h1 class="card-title text-white text-center py-4" style=" height: 10rem; display: flex; flex-direction: column; justify-content: space-between;">Acessórios</h1>
         <img src="{%static 'images/acessoriosLinhas.png' %}" class="card-img-top" style="width: 90%; padding-left: 3rem;" alt="...">
         <div class="card-body">
           <p class="card-text  text-white">Encontre os acessórios perfeitos para complementar sua experiência.</p>
-          <a href="#" class="btn text-white d-flex justify-content-center" style="border-color: #fff; border-radius: 1rem; font-weight: bold; margin-bottom: 1rem;">Conhecer Produtos</a>
+          <a href="{% url 'acessorios_list' %}" class="btn text-white d-flex justify-content-center" style="border-color: #fff; border-radius: 1rem; font-weight: bold; margin-bottom: 1rem;">Conhecer Produtos</a>
         </div>
       </div>
     </div>
@@ -271,7 +271,7 @@
           <div class="card-body " >
             <h5 class="card-title playfair-display">{{ produto.name }}</h5>
             <p class="card-text" ><span style="font-weight: bold; font-size: 1.3rem; color:rgb(192, 13, 228) ;">R$ {{ produto.selling_price }}</span> no PIX  ou Cartão em ate 12x sem juros</p>
-            <a href="#" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
+            <a href="{% url 'produto_detalhe' produto.id %}" class="btn text-white" style="background-color: rgb(228, 93, 255); font-weight: bold;">COMPRAR</a>
           </div>
         </div>
       </div>
