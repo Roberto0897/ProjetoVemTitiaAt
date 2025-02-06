@@ -12,6 +12,8 @@
                     <th>Quantidade</th>
                     <th>Preço Unitário</th>
                     <th>SubTotal</th>
+                    <th>Remover Produto</th>
+                    
 
                 </tr>
             </thead>
@@ -22,11 +24,19 @@
                         <td>{{ item.quantidade }}</td>
                         <td>R$ {{ item.produto.selling_price }}</td>
                         <td>R$ {{ item.subtotal|floatformat:2 }}</td>
+                        <td>
+                            <a href="{% url 'excluir_item_carrinho' item.id %}" class="btn btn-danger btn-sm">
+                                Remover
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="" class="btn btn-success">Finalizar Compra</a>
+
+        <h4 class="text-end mt-3" style="font-size: 1.7rem;">Total: R$ {{ total|floatformat:2 }}</h4>
+
+        <a href="{% url 'finalizar_carrinho'%}" class="btn btn-success">Finalizar Compra</a>
         <a href="{% url 'home' %}" class="btn btn-primary">Continuar Comprando</a>
     {% else %}
         <p>Seu carrinho está vazio.</p>
@@ -62,7 +72,7 @@
           }
       }
   
-      .playfair-display ,h2{
+      .playfair-display ,h2 , h4{
       font-family: "Playfair Display", serif;
       font-optical-sizing: auto;
       font-weight: 900;

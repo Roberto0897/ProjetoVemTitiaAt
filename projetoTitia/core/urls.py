@@ -6,6 +6,7 @@ from produto import views as produto_views
 from categoria import views as categoria_views
 from carrinho import views as carrinho_views
 from cliente import views as cliente_views
+from pedido import views as pedido_views
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -38,9 +39,11 @@ urlpatterns = [
     path('produto/<int:pk>/', produto_views.detalhe_produto, name='produto_detalhe'),
     path('carrinho/', carrinho_views.visualizar_carrinho, name='visualizar_carrinho' ),
     path('adicionar/<int:produto_id>/', carrinho_views.adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
-    path('finalizar/', carrinho_views.finalizar_compra, name="finalizar_compra"),
+    path('finalizar/', carrinho_views.finalizar_carrinho, name="finalizar_carrinho"),
     #path('conta/', views.conta_view, name='informacoes_conta'),
     path('conta/', cliente_views.conta_view, name='informacoes_conta'),
+    path('carrinho/excluir/<int:item_id>/', carrinho_views.excluir_item_carrinho, name='excluir_item_carrinho'),
+    path('pedido/<int:pedido_id>/', pedido_views.pedido_concluido, name='pedido_concluido'),
   
 
 

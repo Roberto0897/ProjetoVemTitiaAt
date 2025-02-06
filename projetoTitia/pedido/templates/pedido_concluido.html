@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5 mb-5" style="margin-left: 2rem; background-color: rgb(255, 255, 255); padding: 2rem; border-radius: 1rem; width: 33%;">
+    <h2>Pedido Concluído</h2>
+    <p>Seu pedido foi concluído com sucesso! ID do Pedido: {{ pedido.id }}</p>
+    <p>Total: R$ {{ pedido.total }}</p>
+    <p>Status: {{ pedido.pedidoStatus }}</p>
+    <a href="{% url 'home' %}" class="btn btn-primary">Voltar para a Loja</a>
+</div>
+<style>
+
+    .card-img-top {
+      width: 300px; /* Largura fixa */
+      height: 250px; /* Altura fixa */
+      /* Garante que a imagem mantenha proporção sem deformar  object-fit: cover; */
+    }
+  
+      @media (min-width: 992px) { /* Para telas grandes (PC e notebooks) */
+          .col-md-5th {
+              width: 18%; /* Divide a linha em 5 colunas */
+  
+          }
+      }
+  
+      @media (max-width: 991px) { /* Para tablets */
+          .col-md-5th {
+              width: 50%; /* Mostra 2 cards por linha */
+          }
+      }
+  
+      @media (max-width: 576px) { /* Para celulares */
+          .col-md-5th {
+              width: 100%; /* Mostra 1 card por linha */
+          }
+      }
+  
+      .playfair-display ,h2 {
+      font-family: "Playfair Display", serif;
+      font-optical-sizing: auto;
+      font-weight: 900;
+      font-style: bold;
+      font-size: 2.7rem;
+      color: #353535;
+     
+    }
+  
+    .roboto, p {
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    font-size: 1.2rem;
+    color: #353535;
+    }
+  
+
+  
+  
+  </style>
+{%endblock%}

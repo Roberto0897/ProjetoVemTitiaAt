@@ -19,6 +19,7 @@ def subtotal(self):
         return self.quantidade * self.produto.selling_price
 
 
+
 def visualizar_carrinho(request):
     """ Exibe o carrinho do usuário autenticado """
     if not request.user.is_authenticated:
@@ -65,40 +66,55 @@ def adicionar_ao_carrinho(request, produto_id):
     carrinho = get_carrinho(request)
     if not carrinho:
         return HttpResponse("Erro: Carrinho não encontrado!", status=400)
+    
+    quantidade = int(request.POST.get("quantidade", 1))
 
     # Cria o item no carrinho
-    itens_carrinho = itensCarrinho.objects.create(
-        carrinho=carrinho,
-        produto=produto,
-        avaliacao=0,  # Valor inicial
-        quantidade=1,  # Quantidade inicial
-        subtotal=produto.selling_price  # Define subtotal
+    item, item_created = itensCarrinho.objects.get_or_create(
+        carrinho=carrinho, produto=produto,
+        defaults={"quantidade": quantidade, "avaliacao": 0, "subtotal": produto.selling_price * quantidade}
     )
+
+    if not item_created:  # Se já existe, apenas aumenta a quantidade
+        item.quantidade += quantidade
+        item.subtotal = item.quantidade * produto.selling_price
+        item.save()
 
     return redirect('visualizar_carrinho')
 
 
 from django.contrib.auth.decorators import login_required
 
+
+
 @login_required
-def finalizar_compra(request):
-    cliente = request.user.cliente
+def excluir_item_carrinho(request, item_id):
+    item = get_object_or_404(itensCarrinho, id=item_id, carrinho__cliente=request.user.cliente)
+    item.delete()
+    return redirect('visualizar_carrinho')
+
+from pedido.models import Pedidos
+
+def finalizar_carrinho(request):
+    cliente = request.user.cliente  # Obtém o cliente logado
+
     carrinho = Carrinho.objects.filter(cliente=cliente).first()
+    if not carrinho:
+        return HttpResponse("Carrinho não encontrado ou já finalizado.", status=400)
 
-    if not carrinho or not carrinho.itenscarrinho_set.exists():
-        return redirect('visualizar_carrinho')  # Caso não tenha itens no carrinho
-    
-    total = sum(item.subtotal for item in carrinho.itenscarrinho_set.all())
+    # Definir os valores para o pedido
+    pedido = Pedidos.objects.create(
+        carrinho=carrinho,
+        ordenado="Pedido Recebido",  # Defina o status inicial do pedido
+        enderecoEnvio="Endereço Exemplo",  # Aqui você pode buscar do banco ou pedir ao usuário
+        email=request.user.email,
+        subTotal=sum(item.subtotal for item in carrinho.itenscarrinho_set.all()),
+        desconto=0,  # Pode calcular descontos aqui
+        total=sum(item.subtotal for item in carrinho.itenscarrinho_set.all()),  # Total sem desconto
+        pedidoStatus="Pedido Recebido",
+    )
 
-    # Cria o pedido
-   # pedido = Pedido.objects.create(cliente=cliente, total=total)
+    # Finalizar o carrinho
+    carrinho.itenscarrinho_set.all().delete() # remove itens
 
-    # Adiciona os itens do carrinho ao pedido
-   # for item in carrinho.itenscarrinho_set.all():
-      #  item.pedido = pedido
-      #  item.save()
-
-    # Limpa o carrinho após a compra
-    carrinho.itenscarrinho_set.all().delete()
-
-    return render(request, 'pedido_confirmado.html', {})
+    return redirect('pedido_concluido', pedido_id=pedido.id) 
