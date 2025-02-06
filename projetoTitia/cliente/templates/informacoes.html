@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Minha Conta{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5 " style="margin-left: 2rem; background-color: #963D94; border-radius: 1rem; padding: 1rem; width: 40%;">
+    <h2>Informações da Conta</h2>
+
+    <h3>Dados Pessoais</h3>
+    <p>Ola {{ user.cliente.name}} !</p>
+    <p><strong>Nome:</strong> {{ user.cliente.name }} </p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Endereço:</strong> {{ user.cliente.address }}</p>
+    <!-- Se você tiver mais informações, pode colocar aqui -->
+    
+    {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'logout' %}">
+          {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Sair</button>
+        </form>
+    {%endif%}
+</div>
+
+<style>
+  
+      @media (min-width: 992px) { /* Para telas grandes (PC e notebooks) */
+          .col-md-5th {
+              width: 50%; /* Divide a linha em 5 colunas */
+  
+          }
+      }
+  
+      @media (max-width: 991px) { /* Para tablets */
+          .col-md-5th {
+              width: 50%; /* Mostra 2 cards por linha */
+          }
+      }
+  
+      @media (max-width: 576px) { /* Para celulares */
+          .col-md-5th {
+              width: 100%; /* Mostra 1 card por linha */
+          }
+      }
+  
+      .playfair-display ,h2{
+      font-family: "Playfair Display", serif;
+      font-optical-sizing: auto;
+      font-weight: 900;
+      font-style: bold;
+      font-size: 2.5rem;
+      color: #fff;
+     
+    }
+
+    .playfair-display ,h3{
+      font-family: "Playfair Display", serif;
+      font-optical-sizing: auto;
+      font-weight: 900;
+      font-style: bold;
+      font-size: 1.8rem;
+      color: #fff;
+      padding-top: 2rem;
+     
+    }
+  
+    .roboto, p {
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    font-size: 1.2rem;
+    color: #fff;
+    }
+  
+
+  
+  
+  </style>
+{% endblock %}

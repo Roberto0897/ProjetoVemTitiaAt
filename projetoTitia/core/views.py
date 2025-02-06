@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 #from django.views.generic import ListView
 from produto.models import Produto
 
@@ -23,6 +23,26 @@ def home(request):
       'Lubrificantes': Lubrificantes,
     }
     return render(request, '_home.html', context)
+
+
+
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from cliente.models import Cliente
+
+
+def registrar(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            usuer = form.save()
+            Cliente.objects.create(user=usuer)  # Cria o cliente para o usuário
+            login(request, usuer)  # Faz login automático após cadastro
+            return redirect('informacoes_conta')  # Redireciona para a página da conta
+    else:
+        form = UserCreationForm()
+    
+    return render(request, "registration/registrar.html", {"form": form})
 
 # def get_context_data(self, **kwargs):
 #    context = super().get_context_data(**kwargs)

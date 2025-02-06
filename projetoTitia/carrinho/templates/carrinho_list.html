@@ -1,34 +1,90 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="container mt-4">
+<div class="container mt-4" style=" margin: 2rem; ">
     <h2>Meu Carrinho</h2>
 
-    {% if produtos_carrinho %}
-        <table class="table">
+    {% if itens %}
+        <table class="table"  >
             <thead>
                 <tr>
                     <th>Produto</th>
                     <th>Quantidade</th>
                     <th>Preço Unitário</th>
-                    <th>Total</th>
+                    <th>SubTotal</th>
+
                 </tr>
             </thead>
             <tbody>
-                {% for item in produtos_carrinho %}
+                {% for item in itens %}
                     <tr>
                         <td>{{ item.produto.name }}</td>
                         <td>{{ item.quantidade }}</td>
                         <td>R$ {{ item.produto.selling_price }}</td>
-                        <td>R$ {{ item.produto.selling_price|floatformat:2|add:item.quantidade }}</td>
+                        <td>R$ {{ item.subtotal|floatformat:2 }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{% url 'checkout' %}" class="btn btn-success">Finalizar Compra</a>
+        <a href="" class="btn btn-success">Finalizar Compra</a>
+        <a href="{% url 'home' %}" class="btn btn-primary">Continuar Comprando</a>
     {% else %}
         <p>Seu carrinho está vazio.</p>
-        <a href="{% url 'produto_list' %}" class="btn btn-primary">Continuar Comprando</a>
+        <a href="{% url 'home' %}" class="btn btn-primary">Continuar Comprando</a>
     {% endif %}
 </div>
-{% endblock %}
+
+
+<style>
+
+    .card-img-top {
+      width: 300px; /* Largura fixa */
+      height: 250px; /* Altura fixa */
+      /* Garante que a imagem mantenha proporção sem deformar  object-fit: cover; */
+    }
+  
+      @media (min-width: 992px) { /* Para telas grandes (PC e notebooks) */
+          .col-md-5th {
+              width: 18%; /* Divide a linha em 5 colunas */
+  
+          }
+      }
+  
+      @media (max-width: 991px) { /* Para tablets */
+          .col-md-5th {
+              width: 50%; /* Mostra 2 cards por linha */
+          }
+      }
+  
+      @media (max-width: 576px) { /* Para celulares */
+          .col-md-5th {
+              width: 100%; /* Mostra 1 card por linha */
+          }
+      }
+  
+      .playfair-display ,h2{
+      font-family: "Playfair Display", serif;
+      font-optical-sizing: auto;
+      font-weight: 900;
+      font-style: bold;
+      font-size: 2.7rem;
+      color: #fff;
+     
+    }
+  
+    .roboto, p {
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    font-size: 1.2rem;
+    color: #fff;
+    }
+  
+
+  
+  
+  </style>
+  {% endblock %}

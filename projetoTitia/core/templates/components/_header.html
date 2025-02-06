@@ -18,11 +18,18 @@
 
       <!-- Ícones de Login e Carrinho -->
       <div class="d-flex align-items-center">
+        {% if request.user.is_authenticated %}
+          <a href="{%url 'informacoes_conta'%}" class="text-white text-decoration-none me-4">
+          <i class="bi bi-person-circle" style="font-size: 2rem; margin-right: 1rem;"></i> Bem-vindo, {{ request.user.get_full_name|default:request.user.username }} 
+          <!-- recupera nome completo do usuario, | se nao tiver recupera o nome de usuario -->
+        </a>
+        {% else %}
           <a href="/login" class="text-white text-decoration-none me-4">
-            <i class="bi bi-person-circle "style="font-size: 2rem;"></i> Faça seu Login
+              <i class="bi bi-person-circle" style="font-size: 2rem; margin-right: 1rem;"></i> Faça seu Login
           </a>
-          <a href="{% url 'visualizar_carrinho' %}" class="text-white text-decoration-none"> 
-            <i class="bi bi-cart2 " style="font-size: 2rem;"></i> Carrinho
+        {% endif %}
+          <a href="{% url 'visualizar_carrinho' %}" class="text-white text-decoration-none" style="margin-right: 1rem;"> 
+            <i class="bi bi-cart2 " style="font-size: 2rem; margin-right: 1rem;"></i>Carrinho
           </a>
       </div>
 
